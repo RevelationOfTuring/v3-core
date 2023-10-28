@@ -16,8 +16,12 @@ library Tick {
     // info stored for each initialized individual tick
     struct Info {
         // the total position liquidity that references this tick
+        // 流动性的增值
+        // 注：可通过流动性变化前后liquidityGross是否等于0来判断这个tick是否仍被引用
         uint128 liquidityGross;
         // amount of net liquidity added (subtracted) when tick is crossed from left to right (right to left),
+        // 当价格从左向右穿过此tick时，整体流动性需要变化的净值
+        // 注：对于lower tick来说，该值为正，对于upper tick来说，该值为负
         int128 liquidityNet;
         // fee growth per unit of liquidity on the _other_ side of this tick (relative to the current tick)
         // only has relative meaning, not absolute — the value depends on when the tick is initialized

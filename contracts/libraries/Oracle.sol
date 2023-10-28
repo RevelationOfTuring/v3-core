@@ -9,6 +9,7 @@ pragma solidity >=0.5.0 <0.8.0;
 /// Observations are overwritten when the full length of the oracle array is populated.
 /// The most recent observation is available, independent of the length of the oracle array, by passing 0 to observe()
 library Oracle {
+    // 一共32+56+160+1=249位，占一个slot
     struct Observation {
         // the block timestamp of the observation
         uint32 blockTimestamp;
