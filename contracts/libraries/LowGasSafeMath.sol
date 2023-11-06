@@ -3,11 +3,13 @@ pragma solidity >=0.7.0;
 
 /// @title Optimized overflow and underflow safe math operations
 /// @notice Contains methods for doing math operations that revert on overflow or underflow for minimal gas cost
+// 低gas消耗的safe math库
 library LowGasSafeMath {
     /// @notice Returns x + y, reverts if sum overflows uint256
     /// @param x The augend
     /// @param y The addend
     /// @return z The sum of x and y
+    // 计算(uint)x+(uint)y，带溢出检查（无revert msg）
     function add(uint256 x, uint256 y) internal pure returns (uint256 z) {
         require((z = x + y) >= x);
     }
@@ -16,6 +18,7 @@ library LowGasSafeMath {
     /// @param x The minuend
     /// @param y The subtrahend
     /// @return z The difference of x and y
+    // 计算x-y，带溢出检查（无revert msg）
     function sub(uint256 x, uint256 y) internal pure returns (uint256 z) {
         require((z = x - y) <= x);
     }
@@ -24,6 +27,7 @@ library LowGasSafeMath {
     /// @param x The multiplicand
     /// @param y The multiplier
     /// @return z The product of x and y
+    // 计算x*y，带溢出检查（无revert msg）
     function mul(uint256 x, uint256 y) internal pure returns (uint256 z) {
         require(x == 0 || (z = x * y) / x == y);
     }
@@ -32,6 +36,7 @@ library LowGasSafeMath {
     /// @param x The augend
     /// @param y The addend
     /// @return z The sum of x and y
+    // 计算(int)x+(int)y，带溢出检查（无revert msg）
     function add(int256 x, int256 y) internal pure returns (int256 z) {
         require((z = x + y) >= x == (y >= 0));
     }
@@ -40,6 +45,7 @@ library LowGasSafeMath {
     /// @param x The minuend
     /// @param y The subtrahend
     /// @return z The difference of x and y
+    // 计算(int)x-(int)y，带溢出检查（无revert msg）
     function sub(int256 x, int256 y) internal pure returns (int256 z) {
         require((z = x - y) <= x == (y >= 0));
     }
