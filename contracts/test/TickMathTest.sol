@@ -8,6 +8,7 @@ contract TickMathTest {
         return TickMath.getSqrtRatioAtTick(tick);
     }
 
+    // 计算TickMath.getSqrtRatioAtTick(tick)的gas消耗
     function getGasCostOfGetSqrtRatioAtTick(int24 tick) external view returns (uint256) {
         uint256 gasBefore = gasleft();
         TickMath.getSqrtRatioAtTick(tick);
@@ -18,6 +19,7 @@ contract TickMathTest {
         return TickMath.getTickAtSqrtRatio(sqrtPriceX96);
     }
 
+    // 计算TickMath.getTickAtSqrtRatio(sqrtPriceX96)的gas消耗
     function getGasCostOfGetTickAtSqrtRatio(uint160 sqrtPriceX96) external view returns (uint256) {
         uint256 gasBefore = gasleft();
         TickMath.getTickAtSqrtRatio(sqrtPriceX96);

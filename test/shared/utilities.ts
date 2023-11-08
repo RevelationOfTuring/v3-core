@@ -60,12 +60,15 @@ export function getCreate2Address(
 bn.config({ EXPONENTIAL_AT: 999999, DECIMAL_PLACES: 40 })
 
 // returns the sqrt price as a 64x96
+// 将sqrt price 变成 64*96
 export function encodePriceSqrt(reserve1: BigNumberish, reserve0: BigNumberish): BigNumber {
+  // token1数量/token0数量开根号 * (2^96)
   return BigNumber.from(
     new bn(reserve1.toString())
       .div(reserve0.toString())
       .sqrt()
       .multipliedBy(new bn(2).pow(96))
+        // 向下取整(floor)
       .integerValue(3)
       .toString()
   )
