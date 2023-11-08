@@ -8,6 +8,7 @@ contract BitMathTest {
         return BitMath.mostSignificantBit(x);
     }
 
+    // 计算BitMath.mostSignificantBit()的gas消耗
     function getGasCostOfMostSignificantBit(uint256 x) external view returns (uint256) {
         uint256 gasBefore = gasleft();
         BitMath.mostSignificantBit(x);
@@ -18,6 +19,7 @@ contract BitMathTest {
         return BitMath.leastSignificantBit(x);
     }
 
+    // 计算BitMath.leastSignificantBit()的gas消耗
     function getGasCostOfLeastSignificantBit(uint256 x) external view returns (uint256) {
         uint256 gasBefore = gasleft();
         BitMath.leastSignificantBit(x);
