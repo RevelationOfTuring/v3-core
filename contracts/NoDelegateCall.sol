@@ -28,7 +28,12 @@ abstract contract NoDelegateCall {
     /// @notice Prevents delegatecall into the modified method
     // 该modifier是用来防止delegatecall对函数进行调用的
     modifier noDelegateCall() {
-        // modifier中的内容会被复制到每个被他修饰的函数中，而immutable变量original的address bytes会被复制到每个使用modifier的地方
+        // modifier中的内容会被复制到每个被他修饰的函数中。
+        // 为什么要用private函数：checkNotDelegateCall()进行封装？
+        // 答：如果修饰器内不使用private函数，而是直接写require(address(this) == original);
+        // 那么会增大factory合约bytecode（因为require(address(this) == original)会被复制到各个使用该修饰器的函数中），而private函数的代码
+        // 只会存一份在bytecode中，调用的时候进行跳转
+        // 而immutable变量original的address bytes会被复制到每个使用modifier的地方
         checkNotDelegateCall();
         _;
     }
