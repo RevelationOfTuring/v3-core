@@ -8,6 +8,7 @@ contract LiquidityMathTest {
         return LiquidityMath.addDelta(x, y);
     }
 
+    // 计算LiquidityMath.addDelta(x, y)的gas消耗
     function getGasCostOfAddDelta(uint128 x, int128 y) external view returns (uint256) {
         uint256 gasBefore = gasleft();
         LiquidityMath.addDelta(x, y);
